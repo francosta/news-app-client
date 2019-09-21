@@ -7,14 +7,17 @@ import getHeadlines from './api/news-api';
 const App = () => {
   const [news, setNews] = useState();
 
-  const headlines = getHeadlines();
-  setNews(headlines);
+  const getNews = () => {
+    getHeadlines().then(resp => setNews(resp));
+  };
+
+  getNews();
 
   return (
     <div className="App">
       <Navbar />
       <h1>Welcome to the News App!</h1>
-      <Board />
+      <Board news={news} />
     </div>
   );
 };
