@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import Navbar from "./components/Navbar"
+import Navbar from './components/Navbar';
 import Board from './components/Board';
+import getHeadlines from './api/news-api';
 
 const App = () => {
+  const [news, setNews] = useState();
+
+  const headlines = getHeadlines();
+  setNews(headlines);
 
   return (
     <div className="App">
@@ -12,6 +17,6 @@ const App = () => {
       <Board />
     </div>
   );
-}
+};
 
 export default App;
